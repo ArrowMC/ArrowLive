@@ -1,0 +1,16 @@
+server:
+  addr: ":8080"
+
+zlmediakit:
+  api_base: "http://127.0.0.1"
+  secret: "035c73f7-bb6b-4889-a715-d9eb2d1925cc"
+  rtmp_push_base: "rtmp://127.0.0.1:1935"
+  http_flv_play_base: "http://127.0.0.1"
+  app: "live"
+
+admin:
+  username: "admin"
+  password: "changeme"
+
+database:
+  path: "./data.db"

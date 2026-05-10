@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>管理端 - ArrowLive</title>
+  <link rel="stylesheet" href="/user/app.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@videojs/html/cdn/video.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.js"></script>
+</head>
+<body>
+
+  <div class="topbar">
+    <h1>ArrowLive · 管理端</h1>
+    <div>
+      <button id="btnLogout">登出</button>
+    </div>
+  </div>
+
+  <div class="admin-tabs">
+    <button id="tabList" class="active">列表模式</button>
+    <button id="tabGrid">九宫格模式</button>
+  </div>
+
+  <section id="viewList" class="admin-layout">
+    <div class="admin-main">
+      <div id="listPlayerLabel" style="margin-bottom:8px; color:#656d76;"></div>
+      <video id="listPlayer" controls autoplay muted style="width:100%;background:#000;border-radius:6px;aspect-ratio:16/9;"></video>
+    </div>
+    <aside class="admin-side">
+      <strong style="padding:6px 10px;display:block;">活动房间</strong>
+      <ul id="roomList"></ul>
+      <div id="roomEmpty" class="small" style="padding:10px;color:#656d76;">暂无活动房间</div>
+    </aside>
+  </section>
+
+  <section id="viewGrid" hidden>
+    <div class="group-tabs" id="groupTabs"></div>
+    <div class="grid" id="gridBox" style="margin:0 24px 24px;"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

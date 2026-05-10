@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>推流自助 - ArrowLive</title>
+  <link rel="stylesheet" href="app.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.7.3/dist/mpegts.js"></script>
+</head>
+<body>
+  <header>
+    <h1>推流自助</h1>
+    <p class="hint">输入房间名生成推流码，在 OBS 中填写推流地址后即可在本页预览。</p>
+  </header>
+
+  <section class="create">
+    <label for="roomName">房间名</label>
+    <input id="roomName" maxlength="32" placeholder="1-32 字符，字母数字下划线" />
+    <button id="btnCreate">生成推流码</button>
+    <span id="createErr" class="err"></span>
+  </section>
+
+  <section id="current" class="panel" hidden>
+    <h2>当前房间：<span id="curName"></span> <small id="curStatus" class="status"></small></h2>
+    <div class="field">
+      <label>推流地址 (RTMP URL)</label>
+      <div class="copy-row"><code id="curRtmp"></code><button class="copy" data-target="curRtmp">复制</button></div>
+    </div>
+    <div class="field">
+      <label>推流 Token</label>
+      <div class="copy-row"><code id="curToken"></code><button class="copy" data-target="curToken">复制</button></div>
+    </div>
+    <div class="field">
+      <label>拉流地址 (HTTP-FLV)</label>
+      <div class="copy-row"><code id="curPlay"></code><button class="copy" data-target="curPlay">复制</button></div>
+    </div>
+    <div class="player-wrap">
+      <video id="player" controls autoplay muted></video>
+    </div>
+  </section>
+
+  <section class="history">
+    <h2>历史房间（本浏览器记录）</h2>
+    <ul id="historyList"></ul>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

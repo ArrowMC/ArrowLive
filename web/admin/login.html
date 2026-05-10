@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>管理员登录 - ArrowLive</title>
+  <link rel="stylesheet" href="/user/app.css" />
+</head>
+<body>
+  <header><h1>管理员登录</h1></header>
+  <section>
+    <div style="max-width: 360px; background:#fff; padding:20px; border:1px solid #d0d7de; border-radius:8px;">
+      <div class="field">
+        <label>用户名</label>
+        <input id="u" autofocus style="width:100%;padding:8px;border:1px solid #d0d7de;border-radius:6px;" />
+      </div>
+      <div class="field">
+        <label>密码</label>
+        <input id="p" type="password" style="width:100%;padding:8px;border:1px solid #d0d7de;border-radius:6px;" />
+      </div>
+      <button id="btn" style="background:#1f6feb;color:#fff;border-color:#1f6feb;">登录</button>
+      <span id="err" class="err"></span>
+    </div>
+  </section>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    async function doLogin() {
+      $('err').textContent = '';
+      const username = $('u').value.trim();
+      const password = $('p').value;
+      try {
+        const r = await fetch('/admin/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        });
+        if (!r.ok) {
+          const d = await r.json().catch(() => ({}));
+          $('err').textContent = d.error || '登录失败';
+          return;
+        }
+        location.href = '/admin/';
+      } catch (e) {
+        $('err').textContent = String(e);
+      }
+    }
+    $('btn').addEventListener('click', doLogin);
+    $('p').addEventListener('keydown', (e) => { if (e.key === 'Enter') doLogin(); });
+  </script>
+</body>
+</html>
