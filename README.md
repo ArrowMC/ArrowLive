@@ -664,10 +664,3 @@ SQLite schema 目前只有单表且启动时 `CREATE TABLE IF NOT EXISTS`，升�
 真正的带宽和 CPU 压力在 ZLMediaKit 端，按其部署规模规划即可。
 
 ---
-
-**附录：相关文件**
-
-- `MediaServer_API.json` —— ZLMediaKit RESTful API 的 Postman v2.1 集合，扩展后端功能时的参数参考
-- `hebhook.html` —— ZLMediaKit WebHook 官方文档离线版（注意原文件名有 typo，不是 `webhook.html`）
-- `needed.txt` —— 自由格式待办
-- `CLAUDE.md` —— 给 Claude Code AI 助手使用的项目上下文文件
